@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Newsletter Slider</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #2c3e50, #34495e);
+            overflow: hidden;
+        }
+
+        /* Card Container */
+        .card {
+            width: 70%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            color: #f5f5f5;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .tags {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            background: white;
+            color: black;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 20px;
+            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .read-more:hover {
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            transform: scale(1.05);
+        }
+
+        /* Navigation Buttons */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, #e67e22, #d35400);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 22px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-button:hover {
+            background: linear-gradient(45deg, #d35400, #e67e22);
+            transform: scale(1.1);
+        }
+
+        .prev {
+            left: 20px; /* Fix: Make the left button visible */
+        }
+
+        .next {
+            right: 20px; /* Fix: Make the right button visible */
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card {
+                width: 90%;
+                padding: 25px;
+            }
+            .prev {
+                left: 10px;
+            }
+            .next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card fade-in">
+        <h2 id="title">Loading...</h2>
+        <p id="content"></p>
+        <div class="tags" id="tags"></div>
+        <a id="link" class="read-more" href="#" target="_blank">Read More</a>
+    </div>
+
+    <button class="nav-button prev" onclick="prevSlide()">&#9665;</button>
+    <button class="nav-button next" onclick="nextSlide()">&#9655;</button>
+
+    <script>
+        let newsletters = [];
+        let currentIndex = 0;
+
+        // Fetch newsletters from JSON file
+        fetch("newsletters.json")
+            .then(response => response.json())
+            .then(data => {
+                newsletters = data;
+                updateCard();
+            })
+            .catch(error => console.error("Error fetching newsletters:", error));
+
+        // Function to update the newsletter card
+        function updateCard() {
+            if (newsletters.length === 0) return;
+
+            const card = document.querySelector(".card");
+            const title = document.getElementById("title");
+            const content = document.getElementById("content");
+            const tagsContainer = document.getElementById("tags");
+            const link = document.getElementById("link");
+
+            // Apply fade-in animation
+            card.classList.remove("show");
+            setTimeout(() => {
+                title.textContent = newsletters[currentIndex].title;
+                content.textContent = newsletters[currentIndex].content;
+                link.href = newsletters[currentIndex].link;
+                tagsContainer.innerHTML = newsletters[currentIndex].tags
+                    .map(tag => `<span class="tag">#${tag}</span>`)
+                    .join(" ");
+                
+                card.classList.add("show");
+            }, 200); 
+        }
+
+        // Navigation functions
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % newsletters.length;
+            updateCard();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + newsletters.length) % newsletters.length;
+            updateCard();
+        }
+
+        // KEYBOARD NAVIGATION: Left Arrow (←) for Previous, Right Arrow (→) for Next
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowRight") {
+                nextSlide();
+            } else if (event.key === "ArrowLeft") {
+                prevSlide();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "title": "Unlocking the Power of Codename Goose: Your New AI Ally",
+        "content": "Discover Codename Goose, the cutting-edge, open-source AI agent designed to help developers with more than just code suggestions. Compatible with any large language model (LLM), Goose empowers you to seamlessly install, execute, edit, and test code. This versatile tool is built for extension, offering robust solutions for programmers looking for deeper integration with AI technologies. Join the community and revolutionize your coding experience!",
+        "link": "https://github.com/block/goose",
+        "tags": [
+            "#AI",
+            "#OpenSource",
+            "#CodenameGoose",
+            "#Developers",
+            "#TechInnovation"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Meet Qwen2.5: Your Next Language Model Experience",
+        "content": "Qwen2.5 is the latest leap in language model technology, offering smarter and more adaptive capabilities. Available in seven sizes, Qwen2.5 supports up to 128,000 tokens and over 29 languages. It excels in instruction following and structured data output, making it ideal for global and technical use cases. Explore its features through platforms like Hugging Face and ModelScope, and see why it's a game-changer!",
+        "link": "https://github.com/QwenLM/Qwen2.5",
+        "tags": [
+            "#Qwen2.5",
+            "#LanguageModel",
+            "#AI",
+            "#TechInnovation",
+            "#Multilingual"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Discover DeepSeek LLM - The Future of AI Language Models",
+        "content": "DeepSeek LLM introduces a 67-billion-parameter language model, trained on 2 trillion English and Chinese tokens. This open-source model excels in reasoning, coding, math, and language tasks. Its superior performance over Llama2 and GPT-3.5 makes it a top choice for researchers and developers. Available in 7B and 67B variants, DeepSeek LLM supports commercial use and is accessible on platforms like Hugging Face.",
+        "link": "https://github.com/deepseek-ai/DeepSeek-LLM",
+        "tags": [
+            "#DeepSeekLLM",
+            "#AI",
+            "#LanguageModel",
+            "#OpenSource",
+            "#MachineLearning"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Unlocking Code Intelligence with DeepSeek-Coder-V2",
+        "content": "Discover DeepSeek-Coder-V2, the transformative open-source code language model that rivals closed-source giants like GPT4-Turbo in code tasks. With an extensive language support and enhanced coding capabilities, it\u2019s set to revolutionize the field of code intelligence. Explore its superior performance, wide programming language support, and expansive context handling, all poised to elevate your coding and reasoning tasks to new heights.",
+        "link": "https://github.com/deepseek-ai/DeepSeek-Coder-V2",
+        "tags": [
+            "#DeepSeekAI",
+            "#CodeIntelligence",
+            "#OpenSource"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Unlock the Power of Page Assist: Your Local AI Companion!",
+        "content": "Page Assist is a versatile browser extension transforming your surfing experience by integrating AI directly into your browser. Supporting Chrome, Brave, Firefox, and more, it provides a user-friendly sidebar and web UI enabling model interaction right on your screen. Whether you're chatting with a webpage or working on a project, Page Assist seamlessly integrates AI to enhance your productivity.",
+        "link": "https://github.com/n4ze3m/page-assist",
+        "tags": [
+            "#PageAssist",
+            "#AIintegration",
+            "#BrowserExtensions",
+            "#OpenSource",
+            "#WebDevelopment"
+        ]
+    }
+]
